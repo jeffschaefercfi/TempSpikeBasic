@@ -1,4 +1,4 @@
-git name: temp_spike_match
+name: temp_spike_match
 description: "TempSpike Match - A temperature matching game"
 publish_to: 'none'
 version: 1.0.0+1
