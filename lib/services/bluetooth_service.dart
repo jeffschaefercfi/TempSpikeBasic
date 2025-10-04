@@ -71,7 +71,7 @@ class BluetoothService {
         for (fbp.ScanResult result in results) {
           final deviceName = result.device.platformName;
 
-          if (deviceName.contains('TP960') || deviceName.contains('TempSpike')) {
+          if (deviceName.contains('TP960R') || deviceName.contains('TempSpike')) {
             // Cancel scan subscription before connecting
             await _scanSubscription?.cancel();
             _scanSubscription = null;
