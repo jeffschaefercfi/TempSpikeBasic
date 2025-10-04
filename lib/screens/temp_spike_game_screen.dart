@@ -28,7 +28,7 @@ class _TempSpikeGameScreenState extends State<TempSpikeGameScreen>
   double _tempDifferenceF = 0;
   double _tempDifferenceC = 0;
   MatchLevel _matchLevel = MatchLevel.far;
-  String _matchStatus = 'Keep trying!';
+  String _matchStatus = 'Large Difference!';
   int _matchStreak = 0;
   int _bestStreak = 0;
 
@@ -400,59 +400,6 @@ class _TempSpikeGameScreenState extends State<TempSpikeGameScreen>
                       );
                     },
                   ),
-
-                  const SizedBox(height: 24),
-
-                  // Streak counter
-                  if (_matchStreak > 0 || _bestStreak > 0)
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 12,
-                      ),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.purple.withOpacity(0.3),
-                            Colors.blue.withOpacity(0.3),
-                          ],
-                        ),
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(
-                          color: Colors.purple,
-                          width: 2,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.local_fire_department,
-                            color: Colors.orange,
-                            size: 24,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            'Streak: $_matchStreak',
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                          if (_bestStreak > 0) ...[
-                            const SizedBox(width: 16),
-                            Text(
-                              'Best: $_bestStreak',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                color: Colors.white70,
-                              ),
-                            ),
-                          ],
-                        ],
-                      ),
-                    ),
 
                   const SizedBox(height: 20),
                 ],
