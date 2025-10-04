@@ -3,25 +3,27 @@ class TemperatureData {
   final double ambientTempF;
   final double internalTempC;
   final double ambientTempC;
-  final double difference;
+  final double differenceC;
+  final double differenceF;
 
   TemperatureData({
     required this.internalTempF,
     required this.ambientTempF,
     required this.internalTempC,
     required this.ambientTempC,
-    required this.difference,
+    required this.differenceC,
+    required this.differenceF,
   });
 
   String getMatchStatus() {
-    if (difference <= 3) return 'Perfect Match!';
-    if (difference <= 8) return 'Getting closer...';
+    if (differenceF <= 3) return 'Perfect Match!';
+    if (differenceF <= 10) return 'Getting closer...';
     return 'Keep trying!';
   }
 
   MatchLevel getMatchLevel() {
-    if (difference <= 3) return MatchLevel.perfect;
-    if (difference <= 8) return MatchLevel.close;
+    if (differenceF <= 3) return MatchLevel.perfect;
+    if (differenceF <= 10) return MatchLevel.close;
     return MatchLevel.far;
   }
 }
@@ -39,25 +41,29 @@ class TemperatureDecoder {
     }
 
     // Internal temp (probe tip): ((bytes[2] | bytes[3]<<8) * 1.667) - 19 = °F
-    int internalRaw = data[2] | (data[3] << 8);
-    double internalTempF = (internalRaw * 1.667) - 19;
+    int internalRaw = data[2];
+    print(data);
+    double internalTempC = (internalRaw - 30).toDouble();
 
     // Ambient temp (probe body): bytes[6] | bytes[7]<<8 = °F directly
-    double ambientTempF = (data[6] | (data[7] << 8)).toDouble();
+    int ambientRaw = data[6];
+    double ambientTempC = (ambientRaw - 30).toDouble();
 
     // Convert to Celsius
-    double internalTempC = (internalTempF - 32) * 5 / 9;
-    double ambientTempC = (ambientTempF - 32) * 5 / 9;
+    double internalTempF = ((internalTempC * 9) / 5 ) + 32;
+    double ambientTempF = ((ambientTempC * 9) / 5 ) + 32;
 
     // Calculate difference
-    double difference = (internalTempF - ambientTempF).abs();
+    double differenceC = (internalTempC - ambientTempC).abs();
+    double differenceF = (internalTempF - ambientTempF).abs();
 
     return TemperatureData(
       internalTempF: internalTempF,
       ambientTempF: ambientTempF,
       internalTempC: internalTempC,
       ambientTempC: ambientTempC,
-      difference: difference,
+      differenceC: differenceC,
+      differenceF: differenceF,
     );
   }
 }

@@ -25,7 +25,8 @@ class _TempSpikeGameScreenState extends State<TempSpikeGameScreen>
   String _connectionStatus = 'Initializing...';
   double _internalTemp = 0;
   double _ambientTemp = 0;
-  double _tempDifference = 0;
+  double _tempDifferenceF = 0;
+  double _tempDifferenceC = 0;
   MatchLevel _matchLevel = MatchLevel.far;
   String _matchStatus = 'Keep trying!';
   int _matchStreak = 0;
@@ -91,7 +92,8 @@ class _TempSpikeGameScreenState extends State<TempSpikeGameScreen>
             setState(() {
               _internalTemp = tempData.internalTempF;
               _ambientTemp = tempData.ambientTempF;
-              _tempDifference = tempData.difference;
+              _tempDifferenceC = tempData.differenceC;
+              _tempDifferenceF = tempData.differenceF;
               _matchLevel = tempData.getMatchLevel();
               _matchStatus = tempData.getMatchStatus();
 
@@ -377,7 +379,7 @@ class _TempSpikeGameScreenState extends State<TempSpikeGameScreen>
                         child: Column(
                           children: [
                             Text(
-                              'Δ ${_tempDifference.toStringAsFixed(1)}°F',
+                              'Δ ${_tempDifferenceF.toStringAsFixed(1)}°F\nΔ ${_tempDifferenceC.toStringAsFixed(1)}°C',
                               style: TextStyle(
                                 fontSize: 48,
                                 fontWeight: FontWeight.bold,
