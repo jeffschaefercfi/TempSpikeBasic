@@ -189,7 +189,7 @@ class BluetoothService {
           // Look for a characteristic that supports notifications
           if (characteristic.properties.notify) {
             _temperatureCharacteristic = characteristic;
-
+            print(_temperatureCharacteristic);//show me the whole thing - debugging only
             // Subscribe to notifications
             await characteristic.setNotifyValue(true);
 
