@@ -4,13 +4,12 @@ Flutter TempSpike BLE demo App
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This TEmpSpike TP960 display app replaces the app provided by TempSpike. 
+The current stable release is in the file app_rel001.apk
 
-A few resources to get you started if this is your first Flutter project:
+Android -only
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To install, open that file on your phone. I tested with a Galaxy Z Fold 6.
+You will need to allow unknown publishers to use it.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+It currently displays the temperatures. More feartures coming soon, like meat specific temperature tracking.
