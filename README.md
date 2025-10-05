@@ -4,7 +4,7 @@ Flutter TempSpike BLE demo App
 
 ## Getting Started
 
-This TEmpSpike TP960 display app replaces the app provided by TempSpike. 
+This TempSpike TP960 display app replaces the app provided by TempSpike. 
 The current stable release is in the file app_rel001.apk
 
 Android -only
